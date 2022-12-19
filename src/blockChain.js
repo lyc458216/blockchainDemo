@@ -21,8 +21,6 @@ class Blockchain {
         newBlock.previousHash = this.getLatestBlock().hash; 
         // 把挖矿的过程应用到添加区块到区块链的过程中:
         newBlock.mineBlock(this.difficulty);
-        // 不挖矿的添加区块链方式:
-        // newBlock.hash = newBlock.calculateHash(); 
         this.chain.push(newBlock);
     }
     // 验证当前区块链是否有效 
