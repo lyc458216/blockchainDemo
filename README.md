@@ -12,4 +12,8 @@ http://localhost:3000/transactions/new
 
 ·GET/mine:将目前的交易打包到新的区块。
 
+http://localhost:3000/mine
+
 ·GET/chain:返回当前的区块链。
+
+http://localhost:3000/chain

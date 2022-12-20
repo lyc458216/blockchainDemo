@@ -9,6 +9,7 @@ class Block {
         this.transactions = [];
         this.previousHash = '';
         this.hash = this.calculateHash();
+        // 不断修改 nonce 值来挖矿
         this.nonce = 0;
     }
     // 计算区块的哈希值 

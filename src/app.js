@@ -2,6 +2,7 @@ const express = require('express');
 const {v4: uuidV4} = require('uuid');
 const bodyParser = require("body-parser");
 const Blockchain = require('./blockchain').Blockchain;
+const Block = require('./blockchain').Block;
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,13 +15,13 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // 接口实现
 // 挖矿，将目前的交易打包到新的区块
-app.get('/mine', (req, res) => {
+app.get('/mine', (_, res) => {
     const latestBlockIndex = testCoin.chain.length;
     const newBlock = new Block(latestBlockIndex, new Date().toString()); 
     newBlock.transactions = testCoin.currentTransactions;
     // Get a reward for mining the new block 
     newBlock.transactions.unshift({
-    sender: '0',
+        sender: '0',
         recipient: nodeIdentifier, 
         amount: 50
     });
@@ -37,7 +38,7 @@ app.post('/transactions/new', urlencodedParser, (req, res) => {
 });
 
 // 返回当前的区块链
-app.get('/chain', (req, res) => {
+app.get('/chain', (_, res) => {
     const response = {
         chain: testCoin.chain,
         length: testCoin.chain.length
