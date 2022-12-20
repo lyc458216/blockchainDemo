@@ -1,7 +1,7 @@
 const SHA256 = require('crypto-js/sha256');
 
 // 区块类
-export class Block {
+class Block {
     // 构造函数
     constructor(index, timestamp) {
         this.index = index;
@@ -40,7 +40,7 @@ class Blockchain {
         this.currentTransactions = [];
     }
     // 添加新的交易到当前区块 
-    addNewTransaction(sender, recipient, amount) {
+    addNewTransaction({sender, recipient, amount}) {
         this.currentTransactions.push({
             sender,
             recipient,
